@@ -11,10 +11,12 @@
         </a>
       </li>
       <li>
-        <a href="#" id="add-project-btn">Add Project</a>
+        <a onclick="myFunction()" href="#" id="add-project-btn">Add Project</a>
       </li>
 
-      <%= render partial: 'form', locals: { project: Project.new }, id: 'add-project-form' %>
+      <div id="myDIV" style="display: none">
+        <%= render partial: 'form', locals: { project: Project.new }, id: 'add-project-form' %>
+      </div>
 
       <% @projects.each do |project| %>
 
@@ -42,5 +44,14 @@
 
 </div>
 
-
+<script>
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
 
