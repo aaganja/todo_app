@@ -21,7 +21,12 @@ class ProjectsController < ApplicationController
         format.html { redirect_to projects_path, notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        if @project.errors.first.type.to_s == 'taken'
+          message = "title already taken"
+        else
+          message = "title cant be blank"
+        end
+        format.html { redirect_to projects_path, alert: message}
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
