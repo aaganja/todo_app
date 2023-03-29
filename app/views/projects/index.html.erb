@@ -11,7 +11,7 @@
         </a>
       </li>
       <li>
-        <a onclick="myFunction()" href="#" id="add-project-btn">Add Project</a>
+        <a onclick="toggleForm()" href="#" id="add-project-btn">Add Project</a>
       </li>
 
       <div id="myDIV" style="display: none">
@@ -43,15 +43,3 @@
   <!-- /#page-content-wrapper -->
 
 </div>
-
-<script>
-  function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-</script>
-
