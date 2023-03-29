@@ -10,9 +10,7 @@
             Projects
         </a>
       </li>
-      <li>
-        <a onclick="toggleForm()" href="#" id="add-project-btn">Add Project</a>
-      </li>
+      <li><a onclick="toggleForm()" href="#" style="color: #FFF" id="add-project-btn">Add Project</a></li>
 
       <div id="myDIV" style="display: none">
         <%= render partial: 'form', locals: { project: Project.new }, id: 'add-project-form' %>
