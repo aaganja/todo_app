@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
+gem "devise", "~> 4.8"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
