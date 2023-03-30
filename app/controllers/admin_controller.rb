@@ -9,7 +9,7 @@ class AdminController < ApplicationController
 
   private
   def authorize_admin
-    flash[:alert] = "You are authorized to visit this page"
+    flash[:alert] = "You are not authorized to visit this page"
     redirect_to root_path unless current_user.admin?
   end
 end

@@ -11,7 +11,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     respond_to do |format|
-      if @task.save
+      if Task.where("due_date = ?", task_params[:due_date]).count >= 3
+        format.html { redirect_to project_tasks_path, alert: 'can create only 3 task with same due date'}
+      elsif @task.save
         format.html { redirect_to project_tasks_path, notice: "Task was successfully created." }
       else
         format.html { redirect_to project_tasks_path, alert: @task.errors.full_messages.join(',') }

@@ -12,7 +12,7 @@
 
   <body>
     <div class="container">
-      <%= render 'shared/sidebar'%>
+      <%= render 'shared/sidebar' if ['tasks', 'projects'].include?(params[:controller])%>
       <div class="d-flex justify-content-center">
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
