@@ -1,0 +1,39 @@
+<%= form_with(model: task, url: project_tasks_path(@project)) do |form| %>
+  <% if task.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "row">
+
+    <div class="col-sm form-group">
+      <%= form.text_field :title, class:"form-control", placeholder:"Enter Title" %>
+    </div>
+
+    <div class="col-sm form-group">
+      <%= form.text_field :description, class:"form-control", placeholder:"Enter Description" %>
+    </div>
+    <div class="col-sm">
+      <%= form.datetime_field :due_date, class:"form-control", placeholder:"Enter Date Time" %>
+    </div>
+
+    <div class="col-sm mt-2">
+      <%= form.submit %>
+    </div>
+  </div>
+    <div class="col-sm">
+      <%= form.label :user_id, style: "display: none" %>
+      <%= form.text_field :user_id, value: current_user.id, style: "display: none" %>
+    </div>
+    <div class="col-sm">
+      <%= form.label :project_id, style: "display: none" %>
+      <%= form.text_field :project_id, value: @project.id, style: "display: none" %>
+    </div>
+<% end %>

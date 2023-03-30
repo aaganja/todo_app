@@ -4,3 +4,4 @@
 import * as bootstrap from "bootstrap"
 import "./custom/toggle_form"
 import "./custom/complete_task"
+import "./custom/task_form_toggle"
