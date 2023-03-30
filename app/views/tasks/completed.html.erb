@@ -6,17 +6,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-
-          <h3 class='my-2'>
           <h3>
-            <%= @project.title.capitalize %> Task List
+            <%= link_to @project.title.capitalize + " Task List", project_tasks_path(@project.id) %>
              |
-            <%= link_to "Completed List", project_task_completed_path(@project.id) %>
+             Completed list
           </h3>
-          <a onclick="toggleTask()" href="#">Add Task</a>
-          <div id="task" class='mb-4' style="display: none">
-            <%= render 'tasks/form', task: Task.new %>
-          </div>
           <table class="table">
             <thead>
               <tr>
@@ -31,7 +25,7 @@
               <% @tasks.each do |task|%>
                 <tr>
                   <th scope="row">
-                    <input type="checkbox" id="task_<%=task.id%>" class="complete_task" name="task_<%=task.id%>" value="<%= task.id %>" onclick="completeTask(<%= @project.id %>, <%= task.id %>)">
+                    <input type="checkbox" id="task_<%=task.id%>" class="complete_task" name="task_<%=task.id%>" value="<%= task.id %>">
                   </th>
                   <td><%= task.title %></td>
                   <td><%= task.description %></td>

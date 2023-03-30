@@ -30,6 +30,10 @@ class TasksController < ApplicationController
     @task.update(completed_at: Time.now)
   end
 
+  def completed
+    @tasks = @project.tasks.where.not(completed_at: nil)
+  end
+
   def new
   end
 
