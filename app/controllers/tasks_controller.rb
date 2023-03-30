@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_project
 
   def index
-    @tasks = @project.tasks
+    @tasks = @project.tasks.where(completed_at: nil)
   end
 
   def show
@@ -23,6 +23,11 @@ class TasksController < ApplicationController
   end
 
   def update
+  end
+
+  def complete
+    @task = current_user.tasks.find(params[:complete])
+    @task.update(completed_at: Time.now)
   end
 
   def new
