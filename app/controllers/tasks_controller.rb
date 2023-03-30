@@ -13,6 +13,9 @@ class TasksController < ApplicationController
   def update
   end
 
+  def new
+  end
+
   private
   def set_project
     @projects = current_user.projects
