@@ -13,13 +13,14 @@
   <body>
     <div class="container">
       <%= render 'shared/sidebar'%>
-
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
+      <div class="d-flex justify-content-center">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>
