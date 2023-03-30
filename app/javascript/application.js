@@ -3,3 +3,4 @@
 // import "controllers"
 import * as bootstrap from "bootstrap"
 import "./custom/toggle_form"
+import "./custom/complete_task"

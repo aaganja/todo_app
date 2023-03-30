@@ -1,14 +1,36 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <div id="wrapper">
-	<%= render 'shared/sidebar'%>
-	<div id="page-content-wrapper">
+  <%= render 'shared/sidebar'%>
+  <div id="page-content-wrapper">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-        	<h3><%= @project.title.capitalize %> Task List</h3>
-        	<% @tasks.each do |task|%>
-        		<%= task.title %>
-        	<% end %>
-
+          <h3><%= @project.title.capitalize %> Task List</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Due date</th>
+                <th scope="col">Completed at</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tasks.each do |task|%>
+                <tr>
+                  <th scope="row">
+                    <input type="checkbox" id="task_<%=task.id%>" class="complete_task" name="task_<%=task.id%>" value="<%= task.id %>" onclick="completeTask(<%= @project.id %>, <%= task.id %>)">
+                  </th>
+                  <td><%= task.title %></td>
+                  <td><%= task.description %></td>
+                  <td><%= task.due_date %></td>
+                  <td><%= task.completed_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
