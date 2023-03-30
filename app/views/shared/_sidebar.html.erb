@@ -22,11 +22,7 @@
 
     <li>
       <% if current_user.present?%>
-        <%= link_to(
-          "Log Out",
-          destroy_user_session_path,
-          method: :delete, class: 'fixed-bottom'
-        ) %>
+        <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'fixed-bottom logout-btn' %>
       <% end %>
     </li>
   </ul>
