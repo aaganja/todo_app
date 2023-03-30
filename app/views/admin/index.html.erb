@@ -1,0 +1,31 @@
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>
+          Task List
+        </h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Due date</th>
+              <th scope="col">Completed at</th>
+              <th scope="col">User</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tasks.each do |task|%>
+              <tr>
+                <td><%= task.title %></td>
+                <td><%= task.description %></td>
+                <td><%= task.due_date %></td>
+                <td><%= task.completed_at %></td>
+                <td><%= task.user.email %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
