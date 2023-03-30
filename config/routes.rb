@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, :only => [:index, :create, :update, :new]
     post 'tasks/complete', to: 'tasks#complete'
+    get 'task_completed', to: 'tasks#completed'
   end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
