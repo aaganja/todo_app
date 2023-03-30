@@ -5,8 +5,9 @@
       <div class="row">
         <div class="col-lg-12">
         	<h3><%= @project.title.capitalize %> Task List</h3>
+          <%= render 'tasks/form', task: Task.new %>
         	<% @tasks.each do |task|%>
-        		<%= task.title %>
+        		<li><%= task.title %></li>
         	<% end %>
 
         </div>
