@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
+  get 'admin/project/:id/tasks', to: 'admin#task'
   resources :projects do
     resources :tasks, :only => [:index, :create, :update, :new]
     post 'tasks/complete', to: 'tasks#complete'

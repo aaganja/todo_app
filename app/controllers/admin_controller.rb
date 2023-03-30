@@ -4,7 +4,12 @@ class AdminController < ApplicationController
   before_action :authorize_admin
 
   def index
-    @tasks = Task.all
+    @projects = Project.all
+  end
+
+  def task
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks
   end
 
   private

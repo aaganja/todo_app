@@ -2,20 +2,26 @@
     <div class="row">
       <div class="col-lg-12">
         <h3>
-          Project List
+          Task List
         </h3>
         <table class="table">
           <thead>
             <tr>
               <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Due date</th>
+              <th scope="col">Completed at</th>
               <th scope="col">User</th>
             </tr>
           </thead>
           <tbody>
-            <% @projects.each do |project|%>
+            <% @tasks.each do |task|%>
               <tr>
-                <td><%= link_to project.title, 'admin/project/'+project.id.to_s+'/tasks' %></td>
-                <td><%= project.user&.email %></td>
+                <td><%= task.title %></td>
+                <td><%= task.description %></td>
+                <td><%= task.due_date %></td>
+                <td><%= task.completed_at %></td>
+                <td><%= task.user.email %></td>
               </tr>
             <% end %>
           </tbody>
