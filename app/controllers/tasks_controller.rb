@@ -7,9 +7,6 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.where(completed_at: nil)
   end
 
-  def show
-  end
-
   def create
     @task = Task.new(task_params)
 
@@ -41,10 +38,6 @@ class TasksController < ApplicationController
   def set_project
     @projects = current_user.projects
     @project = current_user.projects.find(params[:project_id])
-  end
-
-  def set_task
-    @task = Task.find(params[:id])
   end
 
   def task_params
