@@ -8,7 +8,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @tasks = @project.tasks
+    @task = @tasks.new(task_params)
 
     respond_to do |format|
       if Task.where("due_date = ?", task_params[:due_date]).count >= 3
