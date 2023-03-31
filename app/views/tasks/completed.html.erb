@@ -14,7 +14,9 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">
+                  <%= link_to 'Mark as pending', '#', class: 'bulk_task', id: @project.id%>
+                </th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
                 <th scope="col">Due date</th>

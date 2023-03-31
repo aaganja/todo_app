@@ -34,6 +34,11 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.where.not(completed_at: nil)
   end
 
+  def bulk_task
+    tasks = current_user.tasks.where(id: params[:complete_task])
+    tasks.update_all(completed_at: nil)
+  end
+
   def new
   end
 

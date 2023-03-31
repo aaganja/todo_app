@@ -17,3 +17,32 @@ function completeTask(project_id, task_id) {
 }
 
 window.completeTask = completeTask;
+
+
+$(document).ready(function () {
+  $('.bulk_task').click(function() {
+    var completeTask = [];
+    $('.complete_task:checked').each(function() {
+      completeTask.push($(this).val());
+    });
+
+    var project_id = $('.bulk_task').attr('id');
+
+    $.ajax({
+      type: "POST",
+      url: "/projects/"+project_id+"/bulk_task",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        'contentType': "application/json; charset=utf-8",
+      },
+      data: {"complete_task": completeTask},
+      dataType: 'JSON',
+      success: function (msg)
+      {
+        completeTask.forEach(function(task_id) {
+          $('#task_'+task_id).parent().parent().remove()
+        })
+      }
+    });
+  })
+});

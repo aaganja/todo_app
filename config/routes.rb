@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :tasks, :only => [:index, :create, :update, :new]
     post 'tasks/complete', to: 'tasks#complete'
     get 'task_completed', to: 'tasks#completed'
+    post 'bulk_task', to: 'tasks#bulk_task'
   end
 
   devise_for :users
