@@ -9,7 +9,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    @projects = current_user.projects
     @project = Project.new
+    @project.tasks.build
   end
 
   # POST /projects or /projects.json
@@ -58,6 +60,13 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:title)
+      params.require(:project).permit(:title, tasks_attributes: [:title, :description, :due_date, :user_id])
+        .tap do |wl|
+          wl[:tasks_attributes].each do |hash|
+            hash[1].reverse_merge!(
+              user_id: current_user.id
+            )
+          end
+        end
     end
 end

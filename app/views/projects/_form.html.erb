@@ -16,6 +16,18 @@
   </div>
 
   <div>
+  <h3>Task:</h3>
+    <%= form.fields_for :tasks do |tasks_attributes|%>
+        <%= tasks_attributes.label :title, "Task Title:" %>
+        <%= tasks_attributes.text_field :title %>
+        <%= tasks_attributes.label :description, "Description:" %>
+        <%= tasks_attributes.text_field :description, placeholder:"Enter Description" %>
+        <%= tasks_attributes.label :due_date, "Due Date:" %>
+        <%= tasks_attributes.date_field :due_date, placeholder:"Enter Date Time", min: Date.today %>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit "New project" %>
   </div>
 <% end %>
