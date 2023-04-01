@@ -1,36 +1,38 @@
-<%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+  <%= form_with(model: project) do |form| %>
+    <% if project.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% project.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="shadow-lg p-3 mb-5 bg-white rounded">
-    <div class="form-outline mb-4">
-      <%= form.label :title, "Project Title:" %>
-      <%= form.text_field :title %>
-    </div>
-  </div>
-
-  <div>
-    <h3>Task:</h3>
-    <div>
-      <%= form.fields_for :tasks do |f|%>
-        <% render 'task_fields', f: f %>
-      <% end %>
-      <div>
-        <%= link_to_add_fields 'Add more tasks', form, :tasks %>
+    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="form-outline mb-4">
+        <%= form.label :title, "Project Title:" %>
+        <%= form.text_field :title %>
       </div>
     </div>
-  </div>
 
-  <div class="action mt-4">
-    <%= form.submit "Create new project", class: 'btn btn-primary btn-block mb-4' %>
-  </div>
-<% end %>
+    <div>
+      <h3>Task:</h3>
+      <div>
+        <%= form.fields_for :tasks do |f|%>
+          <% render 'task_fields', f: f %>
+        <% end %>
+        <div>
+          <%= link_to_add_fields 'Add more tasks', form, :tasks %>
+        </div>
+      </div>
+    </div>
+
+    <div class="action mt-4">
+      <%= form.submit "Create new project", class: 'btn btn-primary btn-block mb-4' %>
+    </div>
+  <% end %>
+</div>
