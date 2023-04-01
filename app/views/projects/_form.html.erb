@@ -11,8 +11,11 @@
     </div>
   <% end %>
 
-  <div class="form-outline mb-4">
-    <%= form.text_field :title %>
+  <div class="shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="form-outline mb-4">
+      <%= form.label :title, "Project Title:" %>
+      <%= form.text_field :title %>
+    </div>
   </div>
 
   <div>
@@ -22,12 +25,12 @@
         <% render 'task_fields', f: f %>
       <% end %>
       <div>
-        <%= link_to_add_fields 'Add tasks', form, :tasks %>
+        <%= link_to_add_fields 'Add more tasks', form, :tasks %>
       </div>
     </div>
   </div>
 
-  <div class="form-outline mb-4">
-    <%= form.submit "New project" %>
+  <div class="action mt-4">
+    <%= form.submit "Create new project", class: 'btn btn-primary btn-block mb-4' %>
   </div>
 <% end %>

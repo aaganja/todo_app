@@ -1,18 +1,14 @@
-<div class="form-outline mb-4">
-  <%= f.label :title, "Task Title:" %>
-</div>
-<div class="form-outline mb-4">
-  <%= f.text_field :title %>
-</div>
-<div class="form-outline mb-4">
-  <%= f.label :description, "Description:" %>
-</div>
-<div class="form-outline mb-4">
-  <%= f.text_field :description, placeholder:"Enter Description" %>
-</div>
-<div class="form-outline mb-4">
-  <%= f.label :due_date, "Due Date:" %>
-</div>
-<div class="form-outline mb-4">
-  <%= f.date_field :due_date, placeholder:"Enter Date Time", min: Date.today %>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+  <div class="form-outline mb-4">
+    <%= f.label :title, "Task Title:" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-outline mb-4">
+    <%= f.label :description, "Description:" %>
+    <%= f.text_field :description, placeholder:"Enter Description" %>
+  </div>
+  <div class="form-outline mb-4">
+    <%= f.label :due_date, "Due Date:" %>
+    <%= f.date_field :due_date, placeholder:"Enter Date Time", min: Date.today %>
+  </div>
 </div>

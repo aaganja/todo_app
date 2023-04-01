@@ -9,8 +9,8 @@ module ApplicationHelper
 
     link_to_function(name,
       h("add_fields(this,
-        \"#{association}\", \"#{escape_javascript(fields)}\");return false;"),
-      class: 'btn btn-success'+btnClass)
+        \"#{association}\", \"#{escape_javascript(fields)}\");return false;")
+      )
   end
 
   def link_to_function(name, js, opts={})
