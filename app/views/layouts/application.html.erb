@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <div class="container">
       <%= render 'shared/sidebar' if ['tasks', 'projects'].include?(params[:controller])%>
       <div class="d-flex justify-content-center">

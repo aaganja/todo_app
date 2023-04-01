@@ -1,0 +1,6 @@
+<%= f.label :title, "Task Title:" %>
+<%= f.text_field :title %>
+<%= f.label :description, "Description:" %>
+<%= f.text_field :description, placeholder:"Enter Description" %>
+<%= f.label :due_date, "Due Date:" %>
+<%= f.date_field :due_date, placeholder:"Enter Date Time", min: Date.today %>
