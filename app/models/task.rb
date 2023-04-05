@@ -7,6 +7,7 @@ class Task < ApplicationRecord
   validate :task_due_date
 
   def task_due_date
+    return unless due_date.present?
     if Task.where(due_date: due_date).count >= 3
       errors.add :due_date, "can not create more than three on same date"
     end
