@@ -19,7 +19,6 @@ function completeTask(project_id, task_id) {
 window.completeTask = completeTask;
 
 function add_fields(link, association, content) {
-  debugger;
   var newid = new Date().getTime();
   var regexp = new RegExp("new" + association, "g");
   $(link).parent().before(content.replace(regexp, newid));
