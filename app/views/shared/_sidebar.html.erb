@@ -14,7 +14,7 @@
       <%= render partial: 'projects/form', locals: { project: Project.new }, id: 'add-project-form' %>
     </div>
 
-    <% @projects.each do |project| %>
+    <% @projects.where.not(id: nil).each do |project| %>
 
     <li>
       <%= link_to project.title, project_tasks_path(project) %>

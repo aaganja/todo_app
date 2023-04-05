@@ -15,14 +15,20 @@ class ProjectsController < ApplicationController
 
   # POST /projects or /projects.json
   def create
-    @project = current_user.projects.new(project_params)
+    @projects = current_user.projects
+    @project = @projects.new(project_params)
 
     respond_to do |format|
-      if @project.save
-        format.html { redirect_to projects_path, notice: "Project was successfully created." }
+      if !validate_due_date
+        flash[:alert] = 'Task due date can not be more than three on same date.'
+        format.html { render :new }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      elsif @project.save
+        format.html { redirect_to project_tasks_path(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
-        format.html { redirect_to projects_path, alert: @project.errors.full_messages.join(',') }
+        flash[:alert] =  @project.errors.full_messages.join(',')
+        format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -40,5 +46,15 @@ class ProjectsController < ApplicationController
             )
           end
         end
+    end
+
+    def validate_due_date
+      due_date_counts = @project.tasks.group_by(&:due_date).map { |key, items| [key, items.count] }
+      valid_due_date = true
+      due_date_counts.each do |a|
+        return unless a[1].present?
+        valid_due_date = false if Task.where(due_date: a[0]).count + a[1] >= 3
+      end
+      valid_due_date
     end
 end
